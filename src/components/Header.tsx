@@ -1,15 +1,15 @@
 import { Facebook, Instagram, Linkedin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   return (
     <header className="w-full bg-transparent">
       <div className="container mx-auto px-4 py-3 flex items-center justify-center gap-3">
-        <img src={logo} alt="Steel Roofing" className="h-10 w-10 md:h-12 md:w-12" />
-        <div className="text-center">
+        <img src={logo} alt="Steel Roofing" className="h-10 md:h-12" />
+        {/* <div className="text-center">
           <h1 className="text-lg md:text-xl font-bold text-white drop-shadow-lg">Pinnacle Roofing</h1>
           <p className="text-xs text-white drop-shadow hidden sm:block">Every Time!</p>
-        </div>
+        </div> */}
 
         <div className="flex items-center gap-3 md:gap-4">
           <a
