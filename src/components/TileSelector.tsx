@@ -29,7 +29,7 @@ const TileSelector = ({ tiles, selectedTile, onSelectTile }: TileSelectorProps) 
       </button>
       <style>{`.scrollable::-webkit-scrollbar { display: none; } .scrollable { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
       <div ref={scrollRef} className="overflow-y-auto h-full pb-8 pt-8 scrollable">
-        <h2 className="text-lg font-bold text-foreground mb-4">Roofing Mabati</h2>
+        <h2 className="text-lg font-bold text-foreground mb-4">Roofing Option</h2>
         <div className="space-y-2">
         {tiles.map((tile) => (
           <button

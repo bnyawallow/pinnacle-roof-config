@@ -12,26 +12,32 @@ import Spline from '@splinetool/react-spline';
 
 const tileTypes: TileType[] = [
   {
-    id: "corrugated",
-    name: "Corrugated Profile",
+    id: "classic",
+    name: "Classic Tile",
     description: "Classic wavy pattern, excellent water drainage",
     icon: corrugatedIcon
   },
   {
-    id: "standing-seam",
-    name: "Standing Seam",
+    id: "stone-coated",
+    name: "Stone Coated Shingles",
     description: "Modern vertical panels, sleek appearance",
     icon: standingSeamIcon
   },
   {
-    id: "ribbed",
-    name: "Ribbed Profile",
+    id: "ecospan",
+    name: "EcoSpan Tile",
     description: "Bold linear design, strong and durable",
     icon: ribbedIcon
   },
   {
-    id: "tile-look",
-    name: "Tile Look",
+    id: "briton",
+    name: "Briton Tile",
+    description: "Traditional tile appearance with steel strength",
+    icon: tileLookIcon
+  },
+  {
+    id: "corrugated",
+    name: "Corrugated Sheets",
     description: "Traditional tile appearance with steel strength",
     icon: tileLookIcon
   }
