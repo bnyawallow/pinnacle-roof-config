@@ -8,6 +8,7 @@ import corrugatedIcon from "@/assets/tiles/corrugated.png";
 import standingSeamIcon from "@/assets/tiles/standing-seam.png";
 import ribbedIcon from "@/assets/tiles/ribbed.png";
 import tileLookIcon from "@/assets/tiles/tile-look.png";
+import Spline from '@splinetool/react-spline';
 
 const tileTypes: TileType[] = [
   {
@@ -56,18 +57,9 @@ const Index = () => {
 
   return (
     <div className="h-screen overflow-hidden relative">
-      {/* Full screen background preview */}
-      <div 
-        className="fixed inset-0 z-0"
-        style={{ 
-          backgroundColor: currentColor.hex,
-          backgroundImage: `url(${tilePreviewImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'multiply'
-        }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
+      {/* Spline scene embed */}
+      <div className="fixed inset-0 z-0">
+        <Spline scene="https://prod.spline.design/I9J7jyHuL4Bn8JtG/scene.splinecode" />
       </div>
 
       {/* Header */}
@@ -75,9 +67,7 @@ const Index = () => {
         <Header />
       </div>
       
-      {/* Floating panels */}
-      <div className="relative z-10 min-h-[calc(100vh-80px)]">
-        {/* Left panel - Tile Selector */}
+      {/* Left panel - Tile Selector */}
         <div className="fixed left-0 top-[5vh] w-56 h-[90vh] overflow-hidden">
           <TileSelector
             tiles={tileTypes}
@@ -104,7 +94,6 @@ const Index = () => {
             selectedColorHex={currentColor.hex}
           />
         </div>
-      </div>
     </div>
   );
 };
