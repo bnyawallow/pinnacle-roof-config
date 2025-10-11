@@ -57,6 +57,7 @@ const tileColors: TileColor[] = [
 const Index = () => {
   const [selectedTile, setSelectedTile] = useState<string>(tileTypes[0].id);
   const [selectedColor, setSelectedColor] = useState<string>(tileColors[0].id);
+  const [isSplineLoaded, setIsSplineLoaded] = useState<boolean>(false);
 
   const currentTile = tileTypes.find(t => t.id === selectedTile) || tileTypes[0];
   const currentColor = tileColors.find(c => c.id === selectedColor) || tileColors[0];
@@ -65,7 +66,7 @@ const Index = () => {
     <div className="h-screen overflow-hidden relative">
       {/* Spline scene embed */}
       <div className="fixed inset-0 z-0">
-        <SplineViewer selectedTile={selectedTile} selectedColor={selectedColor} />
+        <SplineViewer selectedTile={selectedTile} selectedColor={selectedColor} onLoaded={() => setIsSplineLoaded(true)} />
       </div>
 
       {/* Header */}
@@ -73,23 +74,27 @@ const Index = () => {
         <Header />
       </div>
       
-      {/* Left panel - Tile Selector */}
-        <div className="fixed left-0 top-[5vh] w-56 h-[90vh] overflow-hidden">
-          <TileSelector
-            tiles={tileTypes}
-            selectedTile={selectedTile}
-            onSelectTile={setSelectedTile}
-          />
-        </div>
+      {isSplineLoaded && (
+        <>
+          {/* Left panel - Tile Selector */}
+          <div className="fixed left-0 top-[5vh] w-56 h-[90vh] overflow-hidden">
+            <TileSelector
+              tiles={tileTypes}
+              selectedTile={selectedTile}
+              onSelectTile={setSelectedTile}
+            />
+          </div>
 
-        {/* Right panel - Color Selector */}
-        <div className="fixed right-0 top-[5vh] w-48 h-[90vh] overflow-hidden">
-          <ColorSelector
-            colors={tileColors}
-            selectedColor={selectedColor}
-            onSelectColor={setSelectedColor}
-          />
-        </div>
+          {/* Right panel - Color Selector */}
+          <div className="fixed right-0 top-[5vh] w-48 h-[90vh] overflow-hidden">
+            <ColorSelector
+              colors={tileColors}
+              selectedColor={selectedColor}
+              onSelectColor={setSelectedColor}
+            />
+          </div>
+        </>
+      )}
 
         {/* Bottom center panel - Selection Status */}
         <div className="fixed bottom-0 left-0 w-full hidden">
