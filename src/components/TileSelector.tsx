@@ -34,7 +34,7 @@ const TileSelector = ({ tiles, selectedTile, onSelectTile }: TileSelectorProps) 
         {tiles.map((tile) => (
           <button
             key={tile.id}
-            onClick={() => onSelectTile(tile.id)}
+            onClick={() => { console.log(tile.id); onSelectTile(tile.id); }}
             className={`relative w-full p-3 rounded-lg border-2 transition-all flex flex-col items-center gap-2 ${
               selectedTile === tile.id
                 ? "border-selected bg-selected/20"

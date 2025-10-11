@@ -8,7 +8,7 @@ import corrugatedIcon from "@/assets/tiles/corrugated.png";
 import standingSeamIcon from "@/assets/tiles/standing-seam.png";
 import ribbedIcon from "@/assets/tiles/ribbed.png";
 import tileLookIcon from "@/assets/tiles/tile-look.png";
-import Spline from '@splinetool/react-spline';
+import SplineViewer from "@/components/SplineViewer";
 
 const tileTypes: TileType[] = [
   {
@@ -65,7 +65,7 @@ const Index = () => {
     <div className="h-screen overflow-hidden relative">
       {/* Spline scene embed */}
       <div className="fixed inset-0 z-0">
-        <Spline scene="https://prod.spline.design/I9J7jyHuL4Bn8JtG/scene.splinecode" />
+        <SplineViewer selectedTile={selectedTile} selectedColor={selectedColor} />
       </div>
 
       {/* Header */}
