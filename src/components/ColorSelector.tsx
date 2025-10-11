@@ -32,7 +32,7 @@ const ColorSelector = ({ colors, selectedColor, onSelectColor }: ColorSelectorPr
         {colors.map((color) => (
           <button
             key={color.id}
-            onClick={() => { console.log(color.id); onSelectColor(color.id); }}
+            onClick={() => { onSelectColor(color.id); }}
             className="relative w-full flex items-center gap-3 p-2 rounded-lg transition-all hover:bg-card/20"
           >
             <div

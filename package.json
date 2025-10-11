@@ -1,10 +1,10 @@
 {
-  "name": "pinnacle-roofing",
+  "name": "pinnacle-roofing-config",
   "version": "0.0.0",
   "private": true,
   "description": "Pinnacle Roofing Configurator",
   "license": "ISC",
-  "author": "",
+  "author": "Kyrellos Billy Nyawallow",
   "type": "module",
   "main": "eslint.config.js",
   "scripts": {

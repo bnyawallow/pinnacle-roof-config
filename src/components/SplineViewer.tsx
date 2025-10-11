@@ -30,6 +30,7 @@ const SplineViewer = ({ selectedTile, selectedColor, onLoaded }: SplineViewerPro
 
   useEffect(() => {
     if (applicationRef.current) {
+      console.log(selectedColor);
       applicationRef.current.setVariable('selectedColor', selectedColor);
     }
   }, [selectedColor]);
