@@ -1,7 +1,7 @@
 {
   "name": "pinnacle-roofing-config",
   "version": "0.0.0",
-  "homepage": "https://bnyawallow.github.io/pinnacle-roof-config",
+  "homepage": "https://bnyawallow.github.io/pinnacle-roof-config/",
   "description": "Pinnacle Roofing Configurator",
   "license": "ISC",
   "author": "Kyrellos Billy Nyawallow",
@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
