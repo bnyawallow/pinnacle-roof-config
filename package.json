@@ -1,13 +1,12 @@
 {
   "name": "pinnacle-roofing-config",
   "version": "0.0.0",
-  "private": true,
+  "homepage": "https://bnyawallow.github.io/pinnacle-roof-config",
   "description": "Pinnacle Roofing Configurator",
   "license": "ISC",
   "author": "Kyrellos Billy Nyawallow",
   "type": "module",
   "main": "eslint.config.js",
-  "homepage": "https://bnyawallow.github.io/pinnacle-roof-config",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -15,7 +14,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "vite build",
-    "deploy": "gh-pages -d build"
+    "deploy": "main -d build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
