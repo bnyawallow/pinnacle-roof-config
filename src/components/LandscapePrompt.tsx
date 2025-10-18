@@ -38,35 +38,35 @@ const LandscapePrompt = () => {
   if (!isVisible || !isMobile) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <Card className="w-full max-w-sm p-6 bg-card/95 backdrop-blur-md border-2">
-        <div className="flex items-start justify-between mb-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <Card className="w-full max-w-sm p-6 bg-white/95 backdrop-blur-md border-2 border-[#2a3f6e]/20 shadow-2xl">
+        <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-full">
-              <RotateCcw className="h-6 w-6 text-primary" />
+            <div className="p-2.5 bg-[#fe6b35]/10 rounded-xl">
+              <RotateCcw className="h-6 w-6 text-[#fe6b35]" />
             </div>
             <div>
-              <h3 className="font-semibold text-foreground">Landscape View</h3>
-              <p className="text-sm text-muted-foreground">For better experience</p>
+              <h3 className="font-bold text-[#2a3f6e] text-lg">Landscape View</h3>
+              <p className="text-[#2a3f6e]/70 text-sm">For better experience</p>
             </div>
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={handleDismiss}
-            className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
+            className="h-9 w-9 p-0 text-[#2a3f6e]/60 hover:text-[#2a3f6e] hover:bg-[#2a3f6e]/10 rounded-full"
           >
             <X className="h-4 w-4" />
           </Button>
         </div>
 
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-[#2a3f6e]/80 text-sm mb-6 leading-relaxed">
           Rotate your device to landscape mode to see the full roofing visualizer with all options clearly displayed.
         </p>
 
         <Button
           onClick={handleDismiss}
-          className="w-full"
+          className="w-full bg-[#2a3f6e] hover:bg-[#2a3f6e]/90 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
         >
           Continue in Portrait
         </Button>

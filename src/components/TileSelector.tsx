@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Check, ChevronUp, ChevronDown } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface TileType {
   id: string;
@@ -19,48 +18,47 @@ interface TileSelectorProps {
 
 const TileSelector = ({ tiles, selectedTile, onSelectTile }: TileSelectorProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   const scrollUp = () => scrollRef.current?.scrollBy({ top: -50, behavior: 'smooth' });
   const scrollDown = () => scrollRef.current?.scrollBy({ top: 50, behavior: 'smooth' });
 
   return (
-    <Card className={`bg-card/30 backdrop-blur-md h-full overflow-hidden relative ${isMobile ? 'p-2' : 'p-4'}`}>
-      <button onClick={scrollUp} className="absolute top-2 left-1/2 -translate-x-1/2 z-10 p-1 bg-card/50 rounded-full hover:bg-card/70 transition-colors">
-        <ChevronUp className="h-4 w-4" />
+    <Card className="bg-white/10 backdrop-blur-md h-full overflow-hidden relative p-3 border border-white/20">
+      <button onClick={scrollUp} className="absolute top-2 left-1/2 -translate-x-1/2 z-10 p-1.5 bg-[#2a3f6e]/80 rounded-full hover:bg-[#2a3f6e] transition-all duration-200">
+        <ChevronUp className="h-4 w-4 text-white" />
       </button>
       <style>{`.scrollable::-webkit-scrollbar { display: none; } .scrollable { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
-      <div ref={scrollRef} className={`overflow-y-auto pb-8 ${isMobile ? 'pt-8' : 'pt-10'} scrollable h-full`}>
-        <div className="space-y-2">
+      <div ref={scrollRef} className="overflow-y-auto pb-10 pt-10 scrollable h-full">
+        <div className="space-y-3">
         {tiles.map((tile) => (
           <button
             key={tile.id}
             onClick={() => { onSelectTile(tile.id); }}
-            className={`relative w-full rounded-lg border-2 transition-all flex flex-col items-center ${
+            className={`relative w-full rounded-xl border-2 transition-all duration-200 flex flex-col items-center p-3 gap-2 ${
               selectedTile === tile.id
-                ? "border-selected bg-selected/20"
-                : "border-border/50 bg-card/20 hover:border-primary/50"
-            } ${isMobile ? 'p-2 gap-1' : 'p-3 gap-2'}`}
+                ? "border-[#fe6b35] bg-[#fe6b35]/20 shadow-lg shadow-[#fe6b35]/20"
+                : "border-[#2a3f6e]/30 bg-white/5 hover:border-[#fe6b35]/50 hover:bg-[#fe6b35]/10"
+            }`}
           >
-            <div className={`bg-muted/50 rounded-md flex items-center justify-center ${isMobile ? 'w-12 h-12 p-1' : 'w-16 h-16 p-2'}`}>
+            <div className="w-14 h-14 bg-[#2a3f6e]/10 rounded-lg p-2 flex items-center justify-center border border-[#2a3f6e]/20">
               <img
                 src={tile.icon}
                 alt={tile.name}
-                className="w-full h-full object-contain opacity-80"
+                className="w-full h-full object-contain opacity-90"
               />
             </div>
-            <h3 className={`font-semibold text-foreground text-center ${isMobile ? 'text-xs leading-tight' : 'text-sm'}`}>{tile.name}</h3>
+            <h3 className="font-semibold text-[#2a3f6e] text-sm text-center leading-tight">{tile.name}</h3>
             {selectedTile === tile.id && (
-              <div className="absolute top-2 right-2 bg-selected rounded-full p-1">
-                <Check className="h-3 w-3 text-selected-foreground" />
+              <div className="absolute top-2 right-2 bg-[#fe6b35] rounded-full p-1.5">
+                <Check className="h-4 w-4 text-white" />
               </div>
             )}
           </button>
         ))}
         </div>
       </div>
-      <button onClick={scrollDown} className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 p-1 bg-card/50 rounded-full hover:bg-card/70 transition-colors">
-        <ChevronDown className="h-4 w-4" />
+      <button onClick={scrollDown} className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 p-1.5 bg-[#2a3f6e]/80 rounded-full hover:bg-[#2a3f6e] transition-all duration-200">
+        <ChevronDown className="h-4 w-4 text-white" />
       </button>
     </Card>
   );

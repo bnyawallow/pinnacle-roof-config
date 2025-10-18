@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Check, ChevronUp, ChevronDown } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface TileColor {
   id: string;
@@ -17,50 +16,47 @@ interface ColorSelectorProps {
 
 const ColorSelector = ({ colors, selectedColor, onSelectColor }: ColorSelectorProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   const scrollUp = () => scrollRef.current?.scrollBy({ top: -50, behavior: 'smooth' });
   const scrollDown = () => scrollRef.current?.scrollBy({ top: 50, behavior: 'smooth' });
 
   return (
-    <Card className={`bg-card/30 backdrop-blur-md h-full overflow-hidden relative ${isMobile ? 'p-2' : 'p-4'}`}>
-      <button onClick={scrollUp} className="absolute top-2 left-1/2 -translate-x-1/2 z-10 p-1 bg-card/50 rounded-full hover:bg-card/70 transition-colors">
-        <ChevronUp className="h-4 w-4" />
+    <Card className="bg-white/10 backdrop-blur-md h-full overflow-hidden relative p-3 border border-white/20">
+      <button onClick={scrollUp} className="absolute top-2 left-1/2 -translate-x-1/2 z-10 p-1.5 bg-[#2a3f6e]/80 rounded-full hover:bg-[#2a3f6e] transition-all duration-200">
+        <ChevronUp className="h-4 w-4 text-white" />
       </button>
       <style>{`.scrollable::-webkit-scrollbar { display: none; } .scrollable { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
-      <div ref={scrollRef} className={`overflow-y-auto pb-8 ${isMobile ? 'pt-8' : 'pt-10'} scrollable h-full`}>
-        <div className="space-y-2">
+      <div ref={scrollRef} className="overflow-y-auto pb-10 pt-10 scrollable h-full">
+        <div className="space-y-3">
         {colors.map((color) => (
           <button
             key={color.id}
             onClick={() => { onSelectColor(color.id); }}
-            className={`relative w-full rounded-lg transition-all hover:bg-card/20 ${
-              isMobile ? "flex flex-col items-center p-2 gap-1" : "flex items-center gap-3 p-2"
-            }`}
+            className="relative w-full flex flex-col items-center p-3 gap-2 rounded-xl transition-all duration-200 hover:bg-[#fe6b35]/5"
           >
             <div
-              className={`rounded-md border-2 transition-all flex-shrink-0 ${
+              className={`w-10 h-10 rounded-lg border-2 transition-all duration-200 flex-shrink-0 ${
                 selectedColor === color.id
-                  ? "border-selected scale-95"
-                  : "border-border/50 hover:border-primary/50"
-              } ${isMobile ? "w-8 h-8" : "w-10 h-10"}`}
+                  ? "border-[#fe6b35] scale-95 shadow-lg shadow-[#fe6b35]/30"
+                  : "border-[#2a3f6e]/30 hover:border-[#fe6b35]/50"
+              }`}
               style={{ backgroundColor: color.hex }}
             >
               {selectedColor === color.id && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-selected rounded-full p-1">
-                    <Check className={`text-selected-foreground ${isMobile ? "h-3 w-3" : "h-4 w-4"}`} />
+                  <div className="bg-[#fe6b35] rounded-full p-1.5">
+                    <Check className="h-4 w-4 text-white" />
                   </div>
                 </div>
               )}
             </div>
-            <p className={`text-foreground font-medium text-center ${isMobile ? 'text-xs leading-tight' : 'text-sm'}`}>{color.name}</p>
+            <p className="text-[#2a3f6e] font-medium text-sm text-center leading-tight">{color.name}</p>
           </button>
         ))}
         </div>
       </div>
-      <button onClick={scrollDown} className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 p-1 bg-card/50 rounded-full hover:bg-card/70 transition-colors">
-        <ChevronDown className="h-4 w-4" />
+      <button onClick={scrollDown} className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 p-1.5 bg-[#2a3f6e]/80 rounded-full hover:bg-[#2a3f6e] transition-all duration-200">
+        <ChevronDown className="h-4 w-4 text-white" />
       </button>
     </Card>
   );
