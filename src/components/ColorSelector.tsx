@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Check, ChevronUp, ChevronDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface TileColor {
   id: string;
@@ -16,6 +17,7 @@ interface ColorSelectorProps {
 
 const ColorSelector = ({ colors, selectedColor, onSelectColor }: ColorSelectorProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const scrollUp = () => scrollRef.current?.scrollBy({ top: -50, behavior: 'smooth' });
   const scrollDown = () => scrollRef.current?.scrollBy({ top: 50, behavior: 'smooth' });
@@ -27,7 +29,7 @@ const ColorSelector = ({ colors, selectedColor, onSelectColor }: ColorSelectorPr
       </button>
       <style>{`.scrollable::-webkit-scrollbar { display: none; } .scrollable { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
       <div ref={scrollRef} className="overflow-y-auto pb-10 pt-10 scrollable h-full">
-        <div className="space-y-3">
+        <div className="space-y-3 px-1">
         {colors.map((color) => (
           <button
             key={color.id}
@@ -50,7 +52,9 @@ const ColorSelector = ({ colors, selectedColor, onSelectColor }: ColorSelectorPr
                 </div>
               )}
             </div>
-            <p className="text-[#2a3f6e] font-medium text-sm text-center leading-tight">{color.name}</p>
+            {!isMobile && (
+              <p className="text-[#2a3f6e] font-medium text-sm text-center leading-tight">{color.name}</p>
+            )}
           </button>
         ))}
         </div>

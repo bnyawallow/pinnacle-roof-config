@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Check, ChevronUp, ChevronDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface TileType {
   id: string;
@@ -18,18 +19,19 @@ interface TileSelectorProps {
 
 const TileSelector = ({ tiles, selectedTile, onSelectTile }: TileSelectorProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const scrollUp = () => scrollRef.current?.scrollBy({ top: -50, behavior: 'smooth' });
   const scrollDown = () => scrollRef.current?.scrollBy({ top: 50, behavior: 'smooth' });
 
   return (
-    <Card className="bg-white/10 backdrop-blur-md h-full overflow-hidden relative p-3 border border-white/20">
+    <Card className="bg-white/10 backdrop-blur-md h-full overflow-hidden relative p-3 md:p-3 border border-white/20">
       <button onClick={scrollUp} className="absolute top-2 left-1/2 -translate-x-1/2 z-10 p-1.5 bg-[#2a3f6e]/80 rounded-full hover:bg-[#2a3f6e] transition-all duration-200">
         <ChevronUp className="h-4 w-4 text-white" />
       </button>
       <style>{`.scrollable::-webkit-scrollbar { display: none; } .scrollable { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
       <div ref={scrollRef} className="overflow-y-auto pb-10 pt-10 scrollable h-full">
-        <div className="space-y-3">
+        <div className="space-y-3 px-1">
         {tiles.map((tile) => (
           <button
             key={tile.id}
@@ -47,7 +49,9 @@ const TileSelector = ({ tiles, selectedTile, onSelectTile }: TileSelectorProps) 
                 className="w-full h-full object-contain opacity-90"
               />
             </div>
-            <h3 className="font-semibold text-[#2a3f6e] text-sm text-center leading-tight">{tile.name}</h3>
+            {!isMobile && (
+              <h3 className="font-semibold text-[#2a3f6e] text-sm text-center leading-tight">{tile.name}</h3>
+            )}
             {selectedTile === tile.id && (
               <div className="absolute top-2 right-2 bg-[#fe6b35] rounded-full p-1.5">
                 <Check className="h-4 w-4 text-white" />

@@ -11,6 +11,7 @@ import standingSeamIcon from "@/assets/tiles/standing-seam.png";
 import ribbedIcon from "@/assets/tiles/ribbed.png";
 import tileLookIcon from "@/assets/tiles/tile-look.png";
 import SplineViewer from "@/components/SplineViewer";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const tileTypes: TileType[] = [
   {
@@ -61,6 +62,7 @@ const Index = () => {
   const [selectedColor, setSelectedColor] = useState<string>(tileColors[0].id);
   const [isSplineLoaded, setIsSplineLoaded] = useState<boolean>(false);
   const [showTips, setShowTips] = useState<boolean>(true);
+  const isMobile = useIsMobile();
 
   const currentTile = tileTypes.find(t => t.id === selectedTile) || tileTypes[0];
   const currentColor = tileColors.find(c => c.id === selectedColor) || tileColors[0];
@@ -80,7 +82,11 @@ const Index = () => {
       {isSplineLoaded && (
         <>
           {/* Left panel - Tile Selector */}
-          <div className="fixed left-4 top-[12vh] h-[83vh] w-40 overflow-hidden">
+          <div className={`fixed overflow-hidden ${
+            isMobile
+              ? "left-0 top-[10vh] h-[80vh] w-18"
+              : "left-4 top-[10vh] h-[80vh] w-40"
+          }`}>
             <TileSelector
               tiles={tileTypes}
               selectedTile={selectedTile}
@@ -89,7 +95,11 @@ const Index = () => {
           </div>
 
           {/* Right panel - Color Selector */}
-          <div className="fixed right-4 top-[12vh] h-[83vh] w-36 overflow-hidden">
+          <div className={`fixed overflow-hidden ${
+            isMobile
+              ? "right-0 top-[10vh] h-[80vh] w-15"
+              : "right-4 top-[10vh] h-[80vh] w-36"
+          }`}>
             <ColorSelector
               colors={tileColors}
               selectedColor={selectedColor}
