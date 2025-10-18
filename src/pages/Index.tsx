@@ -84,7 +84,7 @@ const Index = () => {
           {/* Left panel - Tile Selector */}
           <div className={`fixed overflow-hidden ${
             isMobile
-              ? "left-0 top-[10vh] h-[80vh] w-18"
+              ? "left-0 top-[10vh] h-[80vh] w-17"
               : "left-4 top-[10vh] h-[80vh] w-40"
           }`}>
             <TileSelector
