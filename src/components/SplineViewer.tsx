@@ -11,7 +11,6 @@ interface SplineViewerProps {
 const SplineViewer = ({ selectedTile, selectedColor, onLoaded }: SplineViewerProps) => {
   const applicationRef = useRef<Application | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showHint, setShowHint] = useState(true);
 
   const onLoad = (splineApp: Application) => {
     applicationRef.current = splineApp;
@@ -49,33 +48,6 @@ const SplineViewer = ({ selectedTile, selectedColor, onLoaded }: SplineViewerPro
           onLoad={onLoad}
         />
       </div>
-      {isLoaded && showHint && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-80 p-4 rounded-lg text-sm max-w-md">
-          <div className="flex justify-between items-start mb-2">
-            <h3 className="font-semibold">How to Interact</h3>
-            <button
-              onClick={() => setShowHint(false)}
-              className="text-white hover:text-gray-300 text-lg leading-none"
-            >
-              ×
-            </button>
-          </div>
-          <ul className="space-y-1">
-            <li className="flex items-center">
-              <span className="mr-2">🔄</span>
-              Drag the house to view from different angles
-            </li>
-            <li className="flex items-center">
-              <span className="mr-2">🏠</span>
-              Select tile types from the left panel
-            </li>
-            <li className="flex items-center">
-              <span className="mr-2">🎨</span>
-              Choose colors from the right panel
-            </li>
-          </ul>
-        </div>
-      )}
     </div>
   );
 };

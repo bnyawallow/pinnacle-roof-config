@@ -3,6 +3,9 @@ import Header from "@/components/Header";
 import TileSelector, { TileType } from "@/components/TileSelector";
 import ColorSelector, { TileColor } from "@/components/ColorSelector";
 import SelectionStatus from "@/components/SelectionStatus";
+import LandscapePrompt from "@/components/LandscapePrompt";
+import TipsPrompt from "@/components/TipsPrompt";
+import { useIsMobile } from "@/hooks/use-mobile";
 import tilePreviewImage from "@/assets/tile-preview.jpg";
 import corrugatedIcon from "@/assets/tiles/corrugated.png";
 import standingSeamIcon from "@/assets/tiles/standing-seam.png";
@@ -58,6 +61,8 @@ const Index = () => {
   const [selectedTile, setSelectedTile] = useState<string>(tileTypes[0].id);
   const [selectedColor, setSelectedColor] = useState<string>(tileColors[0].id);
   const [isSplineLoaded, setIsSplineLoaded] = useState<boolean>(false);
+  const [showTips, setShowTips] = useState<boolean>(true);
+  const isMobile = useIsMobile();
 
   const currentTile = tileTypes.find(t => t.id === selectedTile) || tileTypes[0];
   const currentColor = tileColors.find(c => c.id === selectedColor) || tileColors[0];
@@ -77,7 +82,7 @@ const Index = () => {
       {isSplineLoaded && (
         <>
           {/* Left panel - Tile Selector */}
-          <div className="fixed left-0 top-[5vh] w-56 h-[90vh] overflow-hidden">
+          <div className={`fixed left-0 top-[12vh] h-[83vh] overflow-hidden ${isMobile ? 'w-32' : 'w-56'}`}>
             <TileSelector
               tiles={tileTypes}
               selectedTile={selectedTile}
@@ -86,7 +91,7 @@ const Index = () => {
           </div>
 
           {/* Right panel - Color Selector */}
-          <div className="fixed right-0 top-[5vh] w-48 h-[90vh] overflow-hidden">
+          <div className={`fixed right-0 top-[12vh] h-[83vh] overflow-hidden ${isMobile ? 'w-28' : 'w-48'}`}>
             <ColorSelector
               colors={tileColors}
               selectedColor={selectedColor}
@@ -105,6 +110,12 @@ const Index = () => {
             selectedColorHex={currentColor.hex}
           />
         </div>
+
+        {/* Tips prompt - shows on first load */}
+        <TipsPrompt isVisible={showTips} onDismiss={() => setShowTips(false)} />
+
+        {/* Landscape prompt for mobile devices */}
+        <LandscapePrompt />
     </div>
   );
 };

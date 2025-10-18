@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Check, ChevronUp, ChevronDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface TileType {
   id: string;
@@ -18,37 +19,37 @@ interface TileSelectorProps {
 
 const TileSelector = ({ tiles, selectedTile, onSelectTile }: TileSelectorProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const scrollUp = () => scrollRef.current?.scrollBy({ top: -50, behavior: 'smooth' });
   const scrollDown = () => scrollRef.current?.scrollBy({ top: 50, behavior: 'smooth' });
 
   return (
-    <Card className="p-4 bg-card/30 backdrop-blur-md h-full overflow-hidden relative">
+    <Card className={`bg-card/30 backdrop-blur-md h-full overflow-hidden relative ${isMobile ? 'p-2' : 'p-4'}`}>
       <button onClick={scrollUp} className="absolute top-2 left-1/2 -translate-x-1/2 z-10 p-1 bg-card/50 rounded-full hover:bg-card/70 transition-colors">
         <ChevronUp className="h-4 w-4" />
       </button>
       <style>{`.scrollable::-webkit-scrollbar { display: none; } .scrollable { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
-      <div ref={scrollRef} className="overflow-y-auto h-full pb-8 pt-8 scrollable">
-        <h2 className="text-lg font-bold text-foreground mb-4">Roofing Option</h2>
+      <div ref={scrollRef} className={`overflow-y-auto pb-8 ${isMobile ? 'pt-8' : 'pt-10'} scrollable h-full`}>
         <div className="space-y-2">
         {tiles.map((tile) => (
           <button
             key={tile.id}
             onClick={() => { onSelectTile(tile.id); }}
-            className={`relative w-full p-3 rounded-lg border-2 transition-all flex flex-col items-center gap-2 ${
+            className={`relative w-full rounded-lg border-2 transition-all flex flex-col items-center ${
               selectedTile === tile.id
                 ? "border-selected bg-selected/20"
                 : "border-border/50 bg-card/20 hover:border-primary/50"
-            }`}
+            } ${isMobile ? 'p-2 gap-1' : 'p-3 gap-2'}`}
           >
-            <div className="w-16 h-16 bg-muted/50 rounded-md p-2 flex items-center justify-center">
+            <div className={`bg-muted/50 rounded-md flex items-center justify-center ${isMobile ? 'w-12 h-12 p-1' : 'w-16 h-16 p-2'}`}>
               <img
                 src={tile.icon}
                 alt={tile.name}
                 className="w-full h-full object-contain opacity-80"
               />
             </div>
-            <h3 className="font-semibold text-foreground text-sm text-center">{tile.name}</h3>
+            <h3 className={`font-semibold text-foreground text-center ${isMobile ? 'text-xs leading-tight' : 'text-sm'}`}>{tile.name}</h3>
             {selectedTile === tile.id && (
               <div className="absolute top-2 right-2 bg-selected rounded-full p-1">
                 <Check className="h-3 w-3 text-selected-foreground" />
