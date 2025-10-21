@@ -5,11 +5,10 @@ import ColorSelector, { TileColor } from "@/components/ColorSelector";
 import SelectionStatus from "@/components/SelectionStatus";
 import LandscapePrompt from "@/components/LandscapePrompt";
 import TipsPrompt from "@/components/TipsPrompt";
-import tilePreviewImage from "@/assets/tile-preview.jpg";
-import corrugatedIcon from "@/assets/tiles/corrugated.png";
-import standingSeamIcon from "@/assets/tiles/standing-seam.png";
-import ribbedIcon from "@/assets/tiles/ribbed.png";
-import tileLookIcon from "@/assets/tiles/tile-look.png";
+// import tilePreviewImage from "@/assets/tile-preview.jpg";
+import classicIcon from "@/assets/tiles/classic.png";
+import ecospanIcon from "@/assets/tiles/ecospan.png";
+import britonIcon from "@/assets/tiles/briton.png";
 import SplineViewer from "@/components/SplineViewer";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -18,43 +17,27 @@ const tileTypes: TileType[] = [
     id: "classic",
     name: "Classic Tile",
     description: "Classic wavy pattern, excellent water drainage",
-    icon: corrugatedIcon
-  },
-  {
-    id: "stone-coated",
-    name: "Stone Coated Shingles",
-    description: "Modern vertical panels, sleek appearance",
-    icon: standingSeamIcon
+    icon: classicIcon
   },
   {
     id: "ecospan",
     name: "EcoSpan Tile",
     description: "Bold linear design, strong and durable",
-    icon: ribbedIcon
+    icon: ecospanIcon
   },
   {
     id: "briton",
     name: "Briton Tile",
     description: "Traditional tile appearance with steel strength",
-    icon: tileLookIcon
-  },
-  {
-    id: "corrugated",
-    name: "Corrugated Sheets",
-    description: "Traditional tile appearance with steel strength",
-    icon: tileLookIcon
+    icon: britonIcon
   }
 ];
 
 const tileColors: TileColor[] = [
-  { id: "charcoal", name: "Charcoal", hex: "#2C3539" },
-  { id: "slate-gray", name: "Slate Gray", hex: "#6B7A88" },
-  { id: "arctic-white", name: "Arctic White", hex: "#E8EDF2" },
-  { id: "terra-cotta", name: "Terra Cotta", hex: "#C1654D" },
-  { id: "forest-green", name: "Forest Green", hex: "#3D5C47" },
-  { id: "burgundy", name: "Burgundy", hex: "#6B2E3E" },
-  { id: "ocean-blue", name: "Ocean Blue", hex: "#3D5F7A" },
-  { id: "sandstone", name: "Sandstone", hex: "#C4A88A" }
+  { id: "charcoal", name: "Charcoal Gray", hex: "#312c33" },
+  { id: "red", name: "Brick Red", hex: "#d05045" },
+  { id: "brown", name: "Brown", hex: "#6b4c52" },
+  { id: "forest-green", name: "Forest Green", hex: "#338376" }
 ];
 
 const Index = () => {
