@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import TileSelector, { TileType } from "@/components/TileSelector";
 import ColorSelector, { TileColor } from "@/components/ColorSelector";
 import SelectionStatus from "@/components/SelectionStatus";
-import LandscapePrompt from "@/components/LandscapePrompt";
+import FullScreenPrompt from "@/components/FullScreenPrompt";
 import TipsPrompt from "@/components/TipsPrompt";
 // import tilePreviewImage from "@/assets/tile-preview.jpg";
 import classicIcon from "@/assets/tiles/classic.png";
@@ -105,8 +105,8 @@ const Index = () => {
         {/* Tips prompt - shows on first load */}
         <TipsPrompt isVisible={showTips} onDismiss={() => setShowTips(false)} />
 
-        {/* Landscape prompt for mobile devices */}
-        <LandscapePrompt />
+        {/* Full screen prompt */}
+        <FullScreenPrompt />
     </div>
   );
 };

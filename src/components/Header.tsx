@@ -1,7 +1,35 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Facebook, Instagram, Linkedin, Maximize, Minimize } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const Header = () => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  useEffect(() => {
+    const checkFullScreen = () => {
+      setIsFullScreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener("fullscreenchange", checkFullScreen);
+    checkFullScreen(); // Initial check
+
+    return () => {
+      document.removeEventListener("fullscreenchange", checkFullScreen);
+    };
+  }, []);
+
+  const toggleFullScreen = async () => {
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await document.documentElement.requestFullscreen();
+      }
+    } catch (error) {
+      console.error('Failed to toggle full screen:', error);
+    }
+  };
+
   return (
     <header className="w-full bg-transparent">
       <div className="container mx-auto px-4 py-3 flex items-center justify-center gap-3">
@@ -12,6 +40,13 @@ const Header = () => {
         </div> */}
 
         <div className="flex items-center gap-3 md:gap-4">
+          <button
+            onClick={toggleFullScreen}
+            className="text-muted-foreground hover:text-primary transition-colors"
+            aria-label={isFullScreen ? "Exit Full Screen" : "Enter Full Screen"}
+          >
+            {isFullScreen ? <Minimize className="h-5 w-5" /> : <Maximize className="h-5 w-5" />}
+          </button>
           <a
             href="https://facebook.com"
             target="_blank"
