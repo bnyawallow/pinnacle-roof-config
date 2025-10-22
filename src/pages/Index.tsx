@@ -102,6 +102,18 @@ const Index = () => {
           />
         </div>
 
+        {/* Shop Now button - bottom center */}
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+          <a
+            href="https://pinnacleroofing.co.ke/our-roofing-solutions/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#fe6b35] hover:bg-[#fe6b35]/90 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105"
+          >
+            Shop Now
+          </a>
+        </div>
+
         {/* Tips prompt - shows on first load */}
         <TipsPrompt isVisible={showTips} onDismiss={() => setShowTips(false)} />
 

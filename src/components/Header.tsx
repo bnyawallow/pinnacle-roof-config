@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Facebook, Instagram, Linkedin, Maximize, Minimize } from "lucide-react";
+import { Facebook, Instagram, Video, Maximize, Minimize } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const Header = () => {
@@ -22,8 +22,20 @@ const Header = () => {
     try {
       if (document.fullscreenElement) {
         await document.exitFullscreen();
+        // Unlock orientation when exiting fullscreen
+        if (screen.orientation && screen.orientation.unlock) {
+          screen.orientation.unlock();
+        }
       } else {
         await document.documentElement.requestFullscreen();
+        // Lock to landscape when entering fullscreen
+        if (screen.orientation && screen.orientation.lock) {
+          try {
+            await screen.orientation.lock('landscape');
+          } catch (orientationError) {
+            console.warn('Failed to lock orientation:', orientationError);
+          }
+        }
       }
     } catch (error) {
       console.error('Failed to toggle full screen:', error);
@@ -41,31 +53,31 @@ const Header = () => {
 
         <div className="flex items-center gap-3 md:gap-4">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/share/15enKYqLZw/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors"
+            className="text-[#fe6b35] hover:text-[#fe6b35]/90 transition-colors"
             aria-label="Facebook"
           >
             <Facebook className="h-5 w-5" />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/pinnacleroofingmabati?utm_source=qr&igsh=ZjAzdHU0d3A2cWph"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors"
+            className="text-[#fe6b35] hover:text-[#fe6b35]/90 transition-colors"
             aria-label="Instagram"
           >
             <Instagram className="h-5 w-5" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.tiktok.com/@pinnacleroofingmabati?_t=ZM-90eYwDLeFCa&_r=1"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors"
-            aria-label="LinkedIn"
+            className="text-[#fe6b35] hover:text-[#fe6b35]/90 transition-colors"
+            aria-label="TikTok"
           >
-            <Linkedin className="h-5 w-5" />
+            <Video className="h-5 w-5" />
           </a>
         </div>
 

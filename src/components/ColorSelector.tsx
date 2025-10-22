@@ -29,7 +29,7 @@ const ColorSelector = ({ colors, selectedColor, onSelectColor }: ColorSelectorPr
       </button>
       <style>{`.scrollable::-webkit-scrollbar { display: none; } .scrollable { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
       <div ref={scrollRef} className="overflow-y-auto pb-10 pt-10 scrollable h-full">
-        <div className="space-y-2 px-1">
+        <div className="space-y-1 px-1">
         {colors.map((color) => (
           <button
             key={color.id}
