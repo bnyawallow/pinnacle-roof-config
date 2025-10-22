@@ -13,8 +13,8 @@ const TipsPrompt = ({ isVisible, onDismiss }: TipsPromptProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <Card className="w-full max-w-md p-8 bg-white/95 backdrop-blur-md border-2 border-[#2a3f6e]/20 shadow-2xl">
-        <div className="flex items-start justify-between mb-8">
+      <Card className="w-full max-w-md max-h-[80vh] p-6 bg-white/90 backdrop-blur-md border-2 border-[#2a3f6e]/20 shadow-2xl overflow-hidden flex flex-col">
+        <div className="flex items-start justify-between mb-6 flex-shrink-0">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-[#2a3f6e]/10 rounded-2xl">
               <Home className="h-7 w-7 text-[#2a3f6e]" />
@@ -28,13 +28,13 @@ const TipsPrompt = ({ isVisible, onDismiss }: TipsPromptProps) => {
             variant="ghost"
             size="sm"
             onClick={onDismiss}
-            className="h-10 w-10 p-0 text-[#2a3f6e]/60 hover:text-[#2a3f6e] hover:bg-[#2a3f6e]/10 rounded-full"
+            className="h-10 w-10 p-0 text-[#2a3f6e]/60 hover:text-[#2a3f6e] hover:bg-[#2a3f6e]/10 rounded-full flex-shrink-0"
           >
             <X className="h-5 w-5" />
           </Button>
         </div>
 
-        <div className="space-y-6 mb-8">
+        <div className="space-y-6 mb-6 overflow-y-auto flex-1">
           <div className="flex items-start gap-4">
             <div className="p-2 bg-[#fe6b35]/10 rounded-xl flex-shrink-0 mt-1">
               <RotateCcw className="h-5 w-5 text-[#fe6b35]" />
@@ -78,7 +78,7 @@ const TipsPrompt = ({ isVisible, onDismiss }: TipsPromptProps) => {
 
         <Button
           onClick={onDismiss}
-          className="w-full bg-[#fe6b35] hover:bg-[#fe6b35]/90 text-white font-semibold py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+          className="w-full bg-[#fe6b35] hover:bg-[#fe6b35]/90 text-white font-semibold py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex-shrink-0"
         >
           Start Configuring
         </Button>

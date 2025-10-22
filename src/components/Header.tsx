@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <header className="w-full bg-transparent">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-center gap-3">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-center gap-6">
         <img src={logo} alt="Steel Roofing" className="h-10 md:h-12" />
         {/* <div className="text-center">
           <h1 className="text-lg md:text-xl font-bold text-white drop-shadow-lg">Pinnacle Roofing</h1>
@@ -40,13 +40,6 @@ const Header = () => {
         </div> */}
 
         <div className="flex items-center gap-3 md:gap-4">
-          <button
-            onClick={toggleFullScreen}
-            className="text-muted-foreground hover:text-primary transition-colors"
-            aria-label={isFullScreen ? "Exit Full Screen" : "Enter Full Screen"}
-          >
-            {isFullScreen ? <Minimize className="h-5 w-5" /> : <Maximize className="h-5 w-5" />}
-          </button>
           <a
             href="https://facebook.com"
             target="_blank"
@@ -75,6 +68,14 @@ const Header = () => {
             <Linkedin className="h-5 w-5" />
           </a>
         </div>
+
+        <button
+          onClick={toggleFullScreen}
+          className="text-[#fe6b35] hover:text-[#fe6b35]/90 transition-colors p-1 rounded-md hover:bg-[#fe6b35]/10"
+          aria-label={isFullScreen ? "Exit Full Screen" : "Enter Full Screen"}
+        >
+          {isFullScreen ? <Minimize className="h-6 w-6" /> : <Maximize className="h-6 w-6" />}
+        </button>
       </div>
     </header>
   );

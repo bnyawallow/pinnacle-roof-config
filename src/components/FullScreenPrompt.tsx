@@ -83,7 +83,7 @@ const FullScreenPrompt = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <Card className="w-full max-w-sm p-6 bg-white/95 backdrop-blur-md border-2 border-[#2a3f6e]/20 shadow-2xl">
+      <Card className="w-full max-w-sm p-6 bg-white/90 backdrop-blur-md border-2 border-[#2a3f6e]/20 shadow-2xl">
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-[#fe6b35]/10 rounded-xl">
