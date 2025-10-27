@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
-import { Facebook, Instagram, Maximize, Minimize } from "lucide-react";
+import { Facebook, Instagram, Maximize, Minimize, Info } from "lucide-react";
 import logo from "@/assets/logo.jpg";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Header = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   useEffect(() => {
     const checkFullScreen = () => {
@@ -90,6 +98,28 @@ const Header = () => {
         >
           {isFullScreen ? <Minimize className="h-6 w-6" /> : <Maximize className="h-6 w-6" />}
         </button>
+
+        <Dialog open={isAboutOpen} onOpenChange={setIsAboutOpen}>
+          <DialogTrigger asChild>
+            <button
+              className="text-purple-500 hover:text-purple-400 transition-colors p-1 rounded-md hover:bg-purple-500/10"
+              aria-label="About the App"
+            >
+              <Info className="h-6 w-6" />
+            </button>
+          </DialogTrigger>
+          <DialogContent className="bg-purple-500/20 backdrop-blur-sm border-purple-300/50">
+            <DialogHeader>
+              <DialogTitle className="text-white">About The App</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-2 text-white">
+              <p>This interactive experience was developed by RedApe KE. For development services, contact us at:</p>
+              <p><strong>Email:</strong> <a href="mailto:bnyawallow@gmail.com" className="text-purple-200 hover:text-white underline">bnyawallow@gmail.com</a></p>
+              <p><strong>Phone:</strong> <a href="tel:+254714909282" className="text-purple-200 hover:text-white underline">+254714909282</a></p>
+              <p><strong>WhatsApp:</strong> <a href="https://wa.me/254714909282" className="text-purple-200 hover:text-white underline">+254714909282</a></p>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </header>
   );
