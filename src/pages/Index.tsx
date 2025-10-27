@@ -35,7 +35,7 @@ const tileTypes: TileType[] = [
 
 const tileColors: TileColor[] = [
   { id: "charcoal", name: "Charcoal Grey", hex: "#3d3a35" },
-  { id: "red", name: "Brick Red", hex: "#6b3529" },
+  { id: "red", name: "Tile Red", hex: "#be3a35" },
   { id: "brown", name: "Chocolate", hex: "#584446" },
   { id: "forest-green", name: "Dark Green", hex: "#1d3c34" }
 ];
