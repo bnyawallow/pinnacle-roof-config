@@ -34,10 +34,10 @@ const tileTypes: TileType[] = [
 ];
 
 const tileColors: TileColor[] = [
-  { id: "charcoal", name: "Charcoal Gray", hex: "#312c33" },
-  { id: "red", name: "Brick Red", hex: "#d05045" },
-  { id: "brown", name: "Brown", hex: "#6b4c52" },
-  { id: "forest-green", name: "Forest Green", hex: "#338376" }
+  { id: "charcoal", name: "Charcoal Grey", hex: "#3d3a35" },
+  { id: "red", name: "Brick Red", hex: "#6b3529" },
+  { id: "brown", name: "Chocolate", hex: "#584446" },
+  { id: "forest-green", name: "Dark Green", hex: "#1d3c34" }
 ];
 
 const Index = () => {
@@ -67,8 +67,8 @@ const Index = () => {
           {/* Left panel - Tile Selector */}
           <div className={`fixed overflow-hidden ${
             isMobile
-              ? "left-0 top-[10vh] h-[80vh] w-17"
-              : "left-4 top-[10vh] h-[80vh] w-40"
+              ? "left-0 top-1/2 -translate-y-1/2 h-[80vh] w-17"
+              : "left-4 top-1/2 -translate-y-1/2 h-[80vh] w-40"
           }`}>
             <TileSelector
               tiles={tileTypes}
@@ -80,8 +80,8 @@ const Index = () => {
           {/* Right panel - Color Selector */}
           <div className={`fixed overflow-hidden ${
             isMobile
-              ? "right-0 top-[10vh] h-[80vh] w-15"
-              : "right-4 top-[10vh] h-[80vh] w-36"
+              ? "right-0 top-1/2 -translate-y-1/2 h-[80vh] w-15"
+              : "right-4 top-1/2 -translate-y-1/2 h-[80vh] w-36"
           }`}>
             <ColorSelector
               colors={tileColors}
