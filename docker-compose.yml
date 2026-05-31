@@ -1,8 +1,6 @@
 services:
   roofconfig:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/bnyawallow/roofconfig:latest
     container_name: roofconfig
     restart: unless-stopped
     labels:
