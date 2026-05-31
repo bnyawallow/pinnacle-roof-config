@@ -1,0 +1,14 @@
+services:
+  roofplanner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: roofconfig
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.roofconfig.rule=Host(`roofconfig.creativefringe.digital`)
+      - traefik.http.routers.roofconfig.entrypoints=websecure
+      - traefik.http.routers.roofconfig.tls=true
+      - traefik.http.routers.roofconfig.tls.certresolver=letsencrypt
+      - traefik.http.services.roofconfig.loadbalancer.server.port=80
